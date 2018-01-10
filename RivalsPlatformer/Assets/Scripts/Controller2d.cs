@@ -74,20 +74,20 @@ public class Controller2d : NetworkBehaviour {
 
             if (hit)
             {
-                float slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
-                if (rayIndex == verticalRayCount-1 && slopeAngle < maxClimbAngle)
-                {
-                    float distanceToSlope = 0;
-                    if (slopeAngle != collisions.slopeAngleOld)
-                    {
+                //float slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
+                //if (rayIndex == verticalRayCount-1 && slopeAngle < maxClimbAngle)
+                //{
+                //    float distanceToSlope = 0;
+                //    if (slopeAngle != collisions.slopeAngleOld)
+                //    {
                        
-                        distanceToSlope = hit.distance - skinWidth;
-                        velocity.y -= distanceToSlope * directionY;
-                    }
-                    ClimbSlope(ref velocity, slopeAngle);
-                    velocity.y += distanceToSlope * directionY;
-                }
-                if (!collisions.climbingSlope || slopeAngle > maxClimbAngle)
+                //        distanceToSlope = hit.distance - skinWidth;
+                //        velocity.y -= distanceToSlope * directionY;
+                //    }
+                //    ClimbSlope(ref velocity, slopeAngle);
+                //    velocity.y += distanceToSlope * directionY;
+                //}
+                if (!collisions.climbingSlope /*|| slopeAngle > maxClimbAngle*/)
                 {
                     velocity.y = (hit.distance - skinWidth) * directionY;
                     rayLength = hit.distance;
