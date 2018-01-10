@@ -35,39 +35,42 @@ public class Player : NetworkBehaviour {
 
     void Update()
     {
-        if(controller.collisions.above|| controller.collisions.below)
+        if (controller.collisions.above || controller.collisions.below)
         {
             velocity.y = 0; //we set the velocity back to 0 because we dont want the gravity force to accumulate
         }
-        Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (isLocalPlayer)
         {
-            if (velocity.y > minJumpVelocity)
+            Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+
+            if (Input.GetKeyUp(KeyCode.Space))
             {
+                if (velocity.y > minJumpVelocity)
+                {
 
-                velocity.y = minJumpVelocity;
-                timeToJumpApex = timeToJumpApex / (maxJumpHeight / minJumpHeight);
-                Debug.Log("velocityApres" + velocity.y);
+                    velocity.y = minJumpVelocity;
+                    timeToJumpApex = timeToJumpApex / (maxJumpHeight / minJumpHeight);
+                    Debug.Log("velocityApres" + velocity.y);
+                }
             }
-        }
-        if (Input.GetKeyDown(KeyCode.Space) && controller.collisions.below)
-        {
-            Debug.Log("velocityFirst" + velocity.y);
-            
-                
+            if (Input.GetKeyDown(KeyCode.Space) && controller.collisions.below)
+            {
+                Debug.Log("velocityFirst" + velocity.y);
+
+
                 velocity.y = maxJumpVelocity;
                 Debug.Log("velocityFirst" + velocity.y);
-            
+
+            }
+
+
+
+            float targetVelocityX = input.x * moveSpeed;
+            velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXsmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirboarne); //Adds some acceleration to the vector. Makes it feel smooth.
+
+            velocity.y += gravity * Time.deltaTime;
+            controller.Move(velocity * Time.deltaTime);
         }
-        
-
-
-        float targetVelocityX = input.x * moveSpeed;
-        velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXsmoothing,(controller.collisions.below)?accelerationTimeGrounded:accelerationTimeAirboarne); //Adds some acceleration to the vector. Makes it feel smooth.
-
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity*Time.deltaTime);
     }
 	
 	
