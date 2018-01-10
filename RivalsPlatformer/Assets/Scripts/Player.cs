@@ -43,7 +43,7 @@ public class Player : NetworkBehaviour {
     {
         if (controller.collisions.above || controller.collisions.below || (controller.collisions.right && !controller.collisions.below) || (controller.collisions.left && !controller.collisions.below))
         {
-            Debug.Log("Contact");
+            
             velocity.y = 0; //we set the velocity back to 0 because we dont want the gravity force to accumulate
         }
         if (isLocalPlayer)
@@ -72,17 +72,19 @@ public class Player : NetworkBehaviour {
             if(Input.GetKeyDown(KeyCode.Space)&& controller.collisions.left && !controller.collisions.below)
             {
                 
-                velocity.y += maxJumpVelocity;
+                velocity.y += maxJumpVelocity *.75f;
                 Debug.Log("WALLJUMP");
-                velocity.x += moveSpeed *4;
-                
+                velocity.x = Mathf.SmoothDamp(velocity.x, moveSpeed * 2 * -1, ref velocityXsmoothing, accelerationTimeAirboarne) * -1;
+                Debug.Log(velocity.x);
+
             }
             if (Input.GetKeyDown(KeyCode.Space) && !controller.collisions.below &&controller.collisions.right )
             {
 
-                velocity.y += maxJumpVelocity;
+                velocity.y += maxJumpVelocity *.75f;
                 Debug.Log("WALLJUMP");
-                velocity.x += moveSpeed * 4*-1;
+                velocity.x = Mathf.SmoothDamp(velocity.x, moveSpeed * 2 * -1, ref velocityXsmoothing, accelerationTimeAirboarne)*-1;
+                Debug.Log(velocity.x);
 
             }
 
