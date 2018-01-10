@@ -212,6 +212,64 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 10.24, y: 2.07}
   m_EdgeRadius: 0
+--- !u!1 &330958813 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1451765283021782, guid: f47dc24040ffc5c46b9fda34394352b2,
+    type: 2}
+  m_PrefabInternal: {fileID: 1885397875}
+--- !u!114 &330958814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 330958813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 1
+  m_SendInterval: 0
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
+--- !u!114 &330958815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 330958813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 244
+    i1: 125
+    i2: 194
+    i3: 64
+    i4: 64
+    i5: 255
+    i6: 197
+    i7: 196
+    i8: 107
+    i9: 159
+    i10: 218
+    i11: 52
+    i12: 57
+    i13: 67
+    i14: 82
+    i15: 178
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!1001 &426707716
 Prefab:
   m_ObjectHideFlags: 0
@@ -219,6 +277,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114662943957988704, guid: 405c91a19877ee34b8a17e30ca6dd437,
+        type: 2}
+      propertyPath: m_SpawnPrefabs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4561821446723600, guid: 405c91a19877ee34b8a17e30ca6dd437, type: 2}
       propertyPath: m_LocalPosition.x
       value: -3.14
@@ -251,6 +314,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114662943957988704, guid: 405c91a19877ee34b8a17e30ca6dd437,
+        type: 2}
+      propertyPath: m_SpawnPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 1118837789200902, guid: 67a8d35c574f4174ca3bc4a15c4576e4,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 405c91a19877ee34b8a17e30ca6dd437, type: 2}
   m_IsPrefabParent: 0
@@ -540,6 +609,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114157031004066698, guid: f47dc24040ffc5c46b9fda34394352b2,
+        type: 2}
+      propertyPath: Items.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4747599953045730, guid: f47dc24040ffc5c46b9fda34394352b2, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0.07
@@ -581,6 +655,12 @@ Prefab:
       propertyPath: Items.Array.data[0]
       value: 
       objectReference: {fileID: 1118837789200902, guid: 67a8d35c574f4174ca3bc4a15c4576e4,
+        type: 2}
+    - target: {fileID: 114157031004066698, guid: f47dc24040ffc5c46b9fda34394352b2,
+        type: 2}
+      propertyPath: Items.Array.data[1]
+      value: 
+      objectReference: {fileID: 1684968454369320, guid: c6bab8781f824bb468708e42c8568961,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f47dc24040ffc5c46b9fda34394352b2, type: 2}
