@@ -2,9 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 [RequireComponent(typeof(BoxCollider2D))]
-public class Controller2d : MonoBehaviour {
+public class Controller2d : NetworkBehaviour {
 
     public LayerMask collisionMask;
 
