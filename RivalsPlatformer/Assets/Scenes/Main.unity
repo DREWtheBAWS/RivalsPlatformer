@@ -321,7 +321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Items:
-  - {fileID: 1684968454369320, guid: c6bab8781f824bb468708e42c8568961, type: 2}
+  - {fileID: 1118837789200902, guid: c8caec19c0a135d49bcf61d9a79be09b, type: 2}
   networkManager: {fileID: 114765455059100324, guid: 237a5f389f4489b438ce7ef43d8661d3,
     type: 2}
   spawnRate: 2
