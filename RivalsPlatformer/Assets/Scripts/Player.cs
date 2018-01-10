@@ -37,6 +37,7 @@ public class Player : NetworkBehaviour {
     {
         if (controller.collisions.above || controller.collisions.below)
         {
+            Debug.Log("Contact");
             velocity.y = 0; //we set the velocity back to 0 because we dont want the gravity force to accumulate
         }
         if (isLocalPlayer)
@@ -50,18 +51,35 @@ public class Player : NetworkBehaviour {
 
                     velocity.y = minJumpVelocity;
                     timeToJumpApex = timeToJumpApex / (maxJumpHeight / minJumpHeight);
-                    Debug.Log("velocityApres" + velocity.y);
+                    //Debug.Log("velocityApres" + velocity.y);
                 }
             }
             if (Input.GetKeyDown(KeyCode.Space) && controller.collisions.below)
             {
-                Debug.Log("velocityFirst" + velocity.y);
+                //Debug.Log("velocityFirst" + velocity.y);
 
 
                 velocity.y = maxJumpVelocity;
-                Debug.Log("velocityFirst" + velocity.y);
+                //Debug.Log("velocityFirst" + velocity.y);
 
             }
+            if(Input.GetKeyDown(KeyCode.Space)&& controller.collisions.left && !controller.collisions.below)
+            {
+                
+                velocity.y += maxJumpVelocity;
+                Debug.Log("WALLJUMP");
+                velocity.x += moveSpeed *4;
+                
+            }
+            if (Input.GetKeyDown(KeyCode.Space) && controller.collisions.right && !controller.collisions.below)
+            {
+
+                velocity.y += maxJumpVelocity;
+                Debug.Log("WALLJUMP");
+                velocity.x += moveSpeed * 4*-1;
+
+            }
+
 
 
 
@@ -70,6 +88,7 @@ public class Player : NetworkBehaviour {
 
             velocity.y += gravity * Time.deltaTime;
             controller.Move(velocity * Time.deltaTime);
+            
         }
     }
 	
