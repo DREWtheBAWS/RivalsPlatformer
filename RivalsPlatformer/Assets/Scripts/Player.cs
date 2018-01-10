@@ -35,7 +35,7 @@ public class Player : NetworkBehaviour {
 
     void Update()
     {
-        if (controller.collisions.above || controller.collisions.below)
+        if (controller.collisions.above || controller.collisions.below || (controller.collisions.right && !controller.collisions.below) || (controller.collisions.left && !controller.collisions.below))
         {
             Debug.Log("Contact");
             velocity.y = 0; //we set the velocity back to 0 because we dont want the gravity force to accumulate
@@ -71,7 +71,7 @@ public class Player : NetworkBehaviour {
                 velocity.x += moveSpeed *4;
                 
             }
-            if (Input.GetKeyDown(KeyCode.Space) && controller.collisions.right && !controller.collisions.below)
+            if (Input.GetKeyDown(KeyCode.Space) && !controller.collisions.below &&controller.collisions.right )
             {
 
                 velocity.y += maxJumpVelocity;
