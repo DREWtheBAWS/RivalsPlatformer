@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 [RequireComponent(typeof(Controller2d))]
-public class Player : MonoBehaviour {
+public class Player : NetworkBehaviour {
 
     public float maxJumpHeight = 4;
     public float minJumpHeight = 1;
