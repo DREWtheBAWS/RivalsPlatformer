@@ -22,6 +22,7 @@ public class Player : NetworkBehaviour {
     Controller2d controller;
     
     
+    
 
     void Start () {
         controller = GetComponent<Controller2d>();
@@ -32,6 +33,11 @@ public class Player : NetworkBehaviour {
         Debug.Log("velocityMin" + minJumpVelocity);
         Debug.Log("velocityMax" + maxJumpVelocity);
     }
+    public override void OnStartLocalPlayer()
+    {
+        Camera.main.GetComponent<CameraController>().setTarget(gameObject.transform);
+    }
+
 
     void Update()
     {
