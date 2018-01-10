@@ -86,7 +86,7 @@ MonoBehaviour:
   timeToJumpApex: 0.4
   accelerationTimeAirboarne: 0.2
   accelerationTimeGrounded: 0.1
-  moveSpeed: 6
+  moveSpeed: 10
 --- !u!114 &114098799225369336
 MonoBehaviour:
   m_ObjectHideFlags: 1
