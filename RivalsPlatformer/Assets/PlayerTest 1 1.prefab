@@ -61,6 +61,7 @@ GameObject:
   - component: {fileID: 114835914723467524}
   - component: {fileID: 114334007602908654}
   - component: {fileID: 114249785958928074}
+  - component: {fileID: 50934570741225416}
   m_Layer: 0
   m_Name: PlayerTest 1 1
   m_TagString: Untagged
@@ -180,6 +181,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!50 &50934570741225416
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1343644018436268}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 2
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!58 &58202792172049662
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -347,16 +368,16 @@ MonoBehaviour:
   m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TransformSyncMode: 1
+  m_TransformSyncMode: 2
   m_SendInterval: 0.033333335
   m_SyncRotationAxis: 3
   m_RotationSyncCompression: 0
   m_SyncSpin: 0
-  m_MovementTheshold: 0.001
+  m_MovementTheshold: 0.1
   m_VelocityThreshold: 0.0001
-  m_SnapThreshold: 5
+  m_SnapThreshold: 30
   m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
+  m_InterpolateMovement: 0.5
 --- !u!114 &114800805667780396
 MonoBehaviour:
   m_ObjectHideFlags: 1
