@@ -341,6 +341,9 @@ MonoBehaviour:
     type: 2}
   grabbed: 0
   distance: 0.5
+  hotmanBaseball: {fileID: 21300000, guid: fa91c193a96df344d9552246b57d52eb, type: 3}
+  hotman: {fileID: 21300000, guid: 6ba37877a68ab2e4c8d3d0d76fc706b5, type: 3}
+  player: {fileID: 1654147690853014}
   holdPoint: {fileID: 4254524263901594}
   throwForce: 500
 --- !u!114 &114429179007334104

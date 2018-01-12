@@ -8,6 +8,11 @@ public class grabScript : NetworkBehaviour
     public GameObject BaseballBatPref;
     public bool grabbed;
     public float distance = 1f;
+    
+    public Sprite hotmanBaseball;
+    
+    public Sprite hotman;
+    public GameObject player;
     RaycastHit2D hit;
     public Transform holdPoint;
     public float throwForce;
@@ -23,6 +28,7 @@ public class grabScript : NetworkBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             CmdGrabAndThrow();
+            
         }
 
         //CmdIsGrabbed();
@@ -55,7 +61,7 @@ public class grabScript : NetworkBehaviour
                 
                 grabbed = true;
                 NetworkServer.Destroy(hit.collider.gameObject);
-                Debug.Log(hit.collider.gameObject.tag);
+                player.GetComponent<SpriteRenderer>().sprite = hotmanBaseball;
             }
 
         }
@@ -65,6 +71,7 @@ public class grabScript : NetworkBehaviour
             grabbed = false;
             GameObject instance = Instantiate(BaseballBatPref, holdPoint.position, Quaternion.identity);
             instance.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x * throwForce, 1);
+            player.GetComponent<SpriteRenderer>().sprite = hotman;
             NetworkServer.Spawn(instance);
             
 
