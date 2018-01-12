@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 public class SimpleCombat : NetworkBehaviour {
-    public Collider2D attackCollider;
+    //public Collider2D attackCollider;
+    public GameObject player;
     bool isCollided;
     const float velocityX=10;
     const float velocityY = 10;
@@ -17,11 +18,10 @@ public class SimpleCombat : NetworkBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (Input.GetKeyUp(KeyCode.K) && isCollided)
+        Debug.Log(isCollided);
+        if (isCollided && Input.GetKeyUp(KeyCode.K))
         {
             Attack();
-            Debug.Log("Attack");
-            return;
         }
         
 	}
@@ -58,11 +58,11 @@ public class SimpleCombat : NetworkBehaviour {
     void Attack()
     {
         Debug.Log("J'attack foreal");
-        
-        if (Input.GetKeyDown(KeyCode.D))
+        Debug.Log("PLayerVelocity is: " + player.GetComponent<Player>().getPlayerVelocityX());
+        if (player.GetComponent<Player>().getPlayerVelocityX()> 0)
         {
             Debug.Log("Attack to the right");
-            GetComponent<Collider>().gameObject.GetComponent<Rigidbody2D>().velocity= new Vector2(transform.localScale.x*velocityX, 0);
+            //GetComponent<Collider>().gameObject.GetComponent<Rigidbody2D>().velocity= new Vector2(transform.localScale.x*velocityX, 0);
 
         }
         else if (Input.GetKeyDown(KeyCode.S))

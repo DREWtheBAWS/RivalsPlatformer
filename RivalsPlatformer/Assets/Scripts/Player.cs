@@ -8,9 +8,9 @@ public class Player : NetworkBehaviour {
 
     public float maxJumpHeight = 4;
     public float minJumpHeight = 1;
-    public float timeToJumpApex=.4f;
-    public float accelerationTimeAirboarne=.2f;
-    public float accelerationTimeGrounded=.1f;
+    public float timeToJumpApex = .4f;
+    public float accelerationTimeAirboarne = .2f;
+    public float accelerationTimeGrounded = .1f;
     public float moveSpeed = .5f;
 
     float gravity;
@@ -20,14 +20,14 @@ public class Player : NetworkBehaviour {
     float velocityXsmoothing;
 
     Controller2d controller;
-    
-    
+
     
 
-    void Start () {
+
+    void Start() {
         controller = GetComponent<Controller2d>();
 
-        gravity = -(2*maxJumpHeight) / Mathf.Pow(timeToJumpApex,2); // D=1/2gt^2  =>  Distance= 1/2 *gravity*time^2
+        gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2); // D=1/2gt^2  =>  Distance= 1/2 *gravity*time^2
         maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
         minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
         Debug.Log("velocityMin" + minJumpVelocity);
@@ -43,7 +43,7 @@ public class Player : NetworkBehaviour {
     {
         if (controller.collisions.above || controller.collisions.below || (controller.collisions.right && !controller.collisions.below) || (controller.collisions.left && !controller.collisions.below))
         {
-            
+
             velocity.y = 0; //we set the velocity back to 0 because we dont want the gravity force to accumulate
         }
         if (isLocalPlayer)
@@ -69,21 +69,21 @@ public class Player : NetworkBehaviour {
                 //Debug.Log("velocityFirst" + velocity.y);
 
             }
-            if(Input.GetKeyDown(KeyCode.Space)&& controller.collisions.left && !controller.collisions.below)
+            if (Input.GetKeyDown(KeyCode.Space) && controller.collisions.left && !controller.collisions.below)
             {
-                
-                velocity.y += maxJumpVelocity *.75f;
+
+                velocity.y += maxJumpVelocity * .75f;
                 Debug.Log("WALLJUMP");
                 velocity.x = Mathf.SmoothDamp(velocity.x, moveSpeed * 2 * -1, ref velocityXsmoothing, accelerationTimeAirboarne) * -1;
                 Debug.Log(velocity.x);
 
             }
-            if (Input.GetKeyDown(KeyCode.Space) && !controller.collisions.below &&controller.collisions.right )
+            if (Input.GetKeyDown(KeyCode.Space) && !controller.collisions.below && controller.collisions.right)
             {
 
-                velocity.y += maxJumpVelocity *.75f;
+                velocity.y += maxJumpVelocity * .75f;
                 Debug.Log("WALLJUMP");
-                velocity.x = Mathf.SmoothDamp(velocity.x, moveSpeed * 2 * -1, ref velocityXsmoothing, accelerationTimeAirboarne)*-1;
+                velocity.x = Mathf.SmoothDamp(velocity.x, moveSpeed * 2 * -1, ref velocityXsmoothing, accelerationTimeAirboarne) * -1;
                 Debug.Log(velocity.x);
 
             }
@@ -96,9 +96,17 @@ public class Player : NetworkBehaviour {
 
             velocity.y += gravity * Time.deltaTime;
             controller.Move(velocity * Time.deltaTime);
-            
+
         }
     }
-	
-	
+    public float getPlayerVelocityX()
+    {
+        return velocity.x;
+    }
+    public float getPlayerVelocityY()
+    {
+        return velocity.y;
+    }
+
+
 }
