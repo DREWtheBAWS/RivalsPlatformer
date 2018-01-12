@@ -37,8 +37,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4254524263901594}
-  - component: {fileID: 114873239923633492}
-  - component: {fileID: 114929493638567916}
   m_Layer: 0
   m_Name: HoldPoint
   m_TagString: Untagged
@@ -339,8 +337,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3afa996b462c29488c0e73e620968da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BaseballBatPref: {fileID: 1684968454369320, guid: c6bab8781f824bb468708e42c8568961,
+    type: 2}
   grabbed: 0
   distance: 0.5
+  hotmanBaseball: {fileID: 21300000, guid: fa91c193a96df344d9552246b57d52eb, type: 3}
+  hotman: {fileID: 21300000, guid: 6ba37877a68ab2e4c8d3d0d76fc706b5, type: 3}
+  player: {fileID: 1654147690853014}
   holdPoint: {fileID: 4254524263901594}
   throwForce: 500
 --- !u!114 &114429179007334104
@@ -373,38 +376,6 @@ MonoBehaviour:
   horizontalRayCount: 4
   verticalRayCount: 4
   maxClimbAngle: 80
---- !u!114 &114873239923633492
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1649749536499622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 117
-    i1: 128
-    i2: 141
-    i3: 210
-    i4: 123
-    i5: 231
-    i6: 149
-    i7: 228
-    i8: 104
-    i9: 32
-    i10: 78
-    i11: 177
-    i12: 214
-    i13: 180
-    i14: 105
-    i15: 85
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!114 &114914888924369066
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -422,31 +393,10 @@ MonoBehaviour:
   m_RotationSyncCompression: 0
   m_SyncSpin: 0
   m_MovementTheshold: 0.1
-  m_VelocityThreshold: 0.0001
-  m_SnapThreshold: 30
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 0.5
---- !u!114 &114929493638567916
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1649749536499622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 1
-  m_SendInterval: 0
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: 0.001
-  m_VelocityThreshold: 0.0001
+  m_VelocityThreshold: 0
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
+  m_InterpolateMovement: 0.5
 --- !u!212 &212799817772834882
 SpriteRenderer:
   m_ObjectHideFlags: 1

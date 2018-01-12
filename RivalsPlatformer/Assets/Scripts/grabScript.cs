@@ -3,75 +3,81 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class grabScript :NetworkBehaviour  {
-
+public class grabScript : NetworkBehaviour
+{
+    public GameObject BaseballBatPref;
     public bool grabbed;
-    public float distance=1f;
+    public float distance = 1f;
+    
+    public Sprite hotmanBaseball;
+    
+    public Sprite hotman;
+    public GameObject player;
     RaycastHit2D hit;
     public Transform holdPoint;
     public float throwForce;
-	
-	
-	// Update is called once per frame
-	void Update () {
 
-      
-        
-        CmdGrabAndThrow();
-	}
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (!isLocalPlayer)
+        {
+            return;
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            CmdGrabAndThrow();
+            
+        }
+
+        //CmdIsGrabbed();
+
+    }
+
+    //[Command]
+    //void CmdIsGrabbed()
+    //{
+    //    if (grabbed)
+    //    {
+            
+    //        //hit.collider.gameObject.transform.position = holdPoint.position;
+
+    //    }
+    //}
     [Command]
     void CmdGrabAndThrow()
     {
-        
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (!grabbed)
         {
-            Debug.Log(grabbed);
-           
-            if (!grabbed)
+
+            Physics2D.queriesStartInColliders = false;
+            hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - 0.7f), Vector2.right * transform.localScale.x, distance);
+            
+            if (hit.collider != null && hit.collider.gameObject.CompareTag("BaseBallBat"))
             {
                 
-                Physics2D.queriesStartInColliders = false;
-                hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - 0.7f), Vector2.right * transform.localScale.x, distance);
-
-                if (hit.collider != null)
-                {
-                    grabbed = true;
-                }
-
-
+                
+                grabbed = true;
+                NetworkServer.Destroy(hit.collider.gameObject);
+                player.GetComponent<SpriteRenderer>().sprite = hotmanBaseball;
             }
-            else
-            {
-                grabbed = false;
-                if (hit.collider.gameObject.GetComponent<Rigidbody2D>().velocity != null)
-                {
-                    hit.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 1);
-                }
-            }
+
         }
-
-        if (grabbed)
+        else
         {
-            if (Input.GetKeyDown(KeyCode.L))
-            {
-                grabbed = false;
-                hit.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x * throwForce, 1);
-            }
-            else
-            {
-                hit.collider.gameObject.transform.position = holdPoint.position;
-            }
+
+            grabbed = false;
+            GameObject instance = Instantiate(BaseballBatPref, holdPoint.position, Quaternion.identity);
+            instance.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x * throwForce, 1);
+            player.GetComponent<SpriteRenderer>().sprite = hotman;
+            NetworkServer.Spawn(instance);
+            
 
 
         }
-    }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawLine(transform.position, transform.position + Vector3.right * transform.localScale.x * distance);
     }
-
 
 }
